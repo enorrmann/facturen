@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="FacturenPU_mysql" transaction-type="RESOURCE_LOCAL">
+    <provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
+    <class>org.solidstate.facturen.entities.Persona</class>
+    <class>org.solidstate.facturen.entities.Factura</class>
+    <class>org.solidstate.facturen.entities.DocumentoDeCompra</class>
+    <class>org.solidstate.facturen.entities.FacturaCompra</class>
+    <class>org.solidstate.facturen.entities.NotaDeCredito</class>
+    <class>org.solidstate.facturen.entities.PercepcionDgr</class>
+    <class>org.solidstate.facturen.entities.DocumentoDeVenta</class>
+    <class>org.solidstate.facturen.entities.NotaDeCreditoVenta</class>
+    <class>org.solidstate.facturen.entities.FacturaVenta</class>
+    <properties>
+      <property name="toplink.logging.level" value="info" />
+      <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/facturen" />
+      <property name="toplink.jdbc.user" value="facturen" />
+      <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver" />
+      <property name="toplink.jdbc.password" value="facturen" />
+      <property name="toplink.ddl-generation" value="create-or-extend-tables" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="FacturenPU" transaction-type="RESOURCE_LOCAL">
+    <provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
+    <class>org.solidstate.facturen.entities.Persona</class>
+    <class>org.solidstate.facturen.entities.Factura</class>
+    <class>org.solidstate.facturen.entities.DocumentoDeCompra</class>
+    <class>org.solidstate.facturen.entities.FacturaCompra</class>
+    <class>org.solidstate.facturen.entities.NotaDeCredito</class>
+    <class>org.solidstate.facturen.entities.PercepcionDgr</class>
+    <class>org.solidstate.facturen.entities.DocumentoDeVenta</class>
+    <class>org.solidstate.facturen.entities.NotaDeCreditoVenta</class>
+    <class>org.solidstate.facturen.entities.FacturaVenta</class>
+    <properties>
+      <!-- Configuración para SQLite -->
+      <property name="toplink.jdbc.driver" value="org.sqlite.JDBC"/>
+      <property name="toplink.jdbc.url" value="jdbc:sqlite:miBaseDeDatos.db"/>
+      <property name="toplink.jdbc.user" value=""/>
+      <property name="toplink.jdbc.password" value=""/>
+      
+      <!-- Propiedades específicas de TopLink -->
+      <property name="toplink.ddl-generation" value="create-tables"/>
+      <property name="toplink.logging.level" value="INFO"/>
+      
+      <!-- Usar plataforma genérica para SQLite -->
+      <property name="toplink.platform.class.name" value="oracle.toplink.essentials.platform.database.DatabasePlatform"/>
+      
+      <!-- Desactivar validación de ID para evitar problemas con secuencias -->
+      <property name="toplink.id-validation" value="NONE"/>
+      
+      <!-- Configuraciones adicionales para compatibilidad con SQLite -->
+      <property name="toplink.jdbc.read-connections.min" value="1"/>
+      <property name="toplink.jdbc.write-connections.min" value="1"/>
+      <property name="toplink.jdbc.read-connections.max" value="1"/>
+      <property name="toplink.jdbc.write-connections.max" value="1"/>
+  </properties>
+  </persistence-unit>
+</persistence>
