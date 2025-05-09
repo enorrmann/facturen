@@ -1,34 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"  ?>
-<!-- Created with iReport - A designer for JasperReports -->
-<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-<jasperReport
-		 name="FacturasVenta"
-		 columnCount="1"
-		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="595"
-		 pageHeight="842"
-		 columnWidth="555"
-		 columnSpacing="0"
-		 leftMargin="20"
-		 rightMargin="20"
-		 topMargin="20"
-		 bottomMargin="20"
-		 whenNoDataType="BlankPage"
-		 isFloatColumnFooter="true"
-		 isTitleNewPage="false"
-		 isSummaryNewPage="false">
-	<property name="ireport.zoom" value="1.0" />
-	<property name="ireport.x" value="0" />
-	<property name="ireport.y" value="0" />
-	<property name="ireport.scriptlethandling" value="0" />
-	<property name="ireport.encoding" value="UTF-8" />
-	<import value="java.util.*" />
-	<import value="net.sf.jasperreports.engine.*" />
-	<import value="net.sf.jasperreports.engine.data.*" />
-
-	<parameter name="periodo" isForPrompting="true" class="java.lang.String"/>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturasVenta" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="52a39ffd-3069-4b1c-815e-b6dcd62a75d7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="periodo" class="java.lang.String"/>
 	<field name="razonSocial" class="java.lang.String">
 		<fieldDescription><![CDATA[persona.razonSocial]]></fieldDescription>
 	</field>
@@ -83,719 +64,360 @@
 	<field name="id_2" class="java.lang.Long">
 		<fieldDescription><![CDATA[id]]></fieldDescription>
 	</field>
-
-	<variable name="sumDgrConcepto1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
-		<variableExpression><![CDATA[$F{concepto}.equals(new Long(1))?$F{montoAlicuotaDGR}:BigDecimal.ZERO]]></variableExpression>
+	<variable name="sumDgrConcepto1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{concepto}.equals(new Long(1))?$F{montoImponible}:BigDecimal.ZERO]]></variableExpression>
 	</variable>
-	<variable name="sumDgrConcepto2" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
-		<variableExpression><![CDATA[$F{concepto}.equals(new Long(2))?$F{montoAlicuotaDGR}:BigDecimal.ZERO]]></variableExpression>
+	<variable name="sumDgrConcepto2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{concepto}.equals(new Long(2))?$F{montoImponible}:BigDecimal.ZERO]]></variableExpression>
 	</variable>
-	<variable name="sumIvaRI" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumIvaRI" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{situacionImpositiva}.equals(new Long(1))?$F{iva21}:BigDecimal.ZERO]]></variableExpression>
 	</variable>
-	<variable name="sumIvaMT_CF" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumIvaMT_CF" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[!$F{situacionImpositiva}.equals(new Long(1))?$F{iva21}:BigDecimal.ZERO]]></variableExpression>
 	</variable>
-	<variable name="sumSubtotal" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumSubtotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{montoImponible}]]></variableExpression>
 	</variable>
-	<variable name="sumIva" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumIva" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{iva21}]]></variableExpression>
 	</variable>
-	<variable name="sumTotal" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumTotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{totalFactura}]]></variableExpression>
 	</variable>
-	<variable name="sumDgr" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumDgr" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{montoAlicuotaDGR}]]></variableExpression>
 	</variable>
-	<variable name="sumTasaHigiene" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="sumTasaHigiene" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{montoAlicuotaTasaHigiene}]]></variableExpression>
 	</variable>
-		<background>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</background>
-		<title>
-			<band height="79"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="22"
-						width="554"
-						height="35"
-						key="staticText"/>
-					<box></box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["LIBRO DE IVA VENTAS  " + $P{periodo}]]></textFieldExpression>
-				</textField>
-			</band>
-		</title>
-		<pageHeader>
-			<band height="21"  isSplitAllowed="true" >
-			</band>
-		</pageHeader>
-		<columnHeader>
-			<band height="18"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="2"
-						y="0"
-						width="77"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="staticText" x="0" y="22" width="554" height="35" uuid="e066df3a-ec01-41ba-858f-8da6a6c8c355"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["LIBRO DE IVA VENTAS  " + $P{periodo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="2" y="0" width="77" height="18" uuid="82c8e55c-8cbf-4563-b9c7-91f10d91e13e"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[Fecha / Num]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="79"
-						y="0"
-						width="133"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="79" y="0" width="133" height="18" uuid="36967063-32c2-4fc3-b0d9-c1d13d4f048a"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[Razon Social]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="212"
-						y="0"
-						width="25"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="212" y="0" width="25" height="18" uuid="ac71d1dc-87c3-4552-9fee-bc4a65bef318"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[S.I.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="237"
-						y="0"
-						width="47"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="237" y="0" width="47" height="18" uuid="b694ad1e-7a76-4992-baa2-dd359762df6a"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[SubTotal]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="284"
-						y="0"
-						width="47"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="284" y="0" width="47" height="18" uuid="740a32e1-47c6-4db8-b035-ebb592fd4961"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[IVA]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="331"
-						y="0"
-						width="47"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="331" y="0" width="47" height="18" uuid="91ffb359-8ba0-44a4-bb49-f14fcc2bd269"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[TOTAL]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="378"
-						y="0"
-						width="88"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="378" y="0" width="88" height="18" uuid="a71cc39e-ffee-476a-8d32-aad1c3fbab80"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[DGR]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="467"
-						y="0"
-						width="88"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="467" y="0" width="88" height="18" uuid="49a1cbd1-3650-41d1-912f-cde4ef04aa75"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
 				<text><![CDATA[T. Higiene]]></text>
-				</staticText>
-				<line direction="TopDown">
-					<reportElement
-						x="0"
-						y="16"
-						width="554"
-						height="1"
-						key="line-1"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="212"
-						y="1"
-						width="0"
-						height="14"
-						key="line-12"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="237"
-						y="1"
-						width="0"
-						height="14"
-						key="line-13"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="284"
-						y="1"
-						width="0"
-						height="14"
-						key="line-14"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="331"
-						y="1"
-						width="0"
-						height="14"
-						key="line-15"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="378"
-						y="1"
-						width="0"
-						height="14"
-						key="line-16"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="467"
-						y="1"
-						width="0"
-						height="14"
-						key="line-18"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="554"
-						y="1"
-						width="0"
-						height="14"
-						key="line-20"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-			</band>
-		</columnHeader>
-		<detail>
-			<band height="36"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="2"
-						y="0"
-						width="77"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.util.Date"><![CDATA[$F{fechaFactura}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="2"
-						y="18"
-						width="19"
-						height="18"
-						key="textField-1"
-						positionType="Float"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{letraFactura}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="21"
-						y="18"
-						width="70"
-						height="18"
-						key="textField-2"
-						positionType="Float"/>
-					<box></box>
-					<textElement>
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{numeroFactura}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="79"
-						y="0"
-						width="133"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Left">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{razonSocial}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="212"
-						y="0"
-						width="25"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{situacionImpositivaString}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="237"
-						y="0"
-						width="47"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{montoImponible}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="284"
-						y="0"
-						width="47"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{iva21}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="331"
-						y="0"
-						width="47"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{totalFactura}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="378"
-						y="0"
-						width="44"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{alicuotaDGR}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="422"
-						y="0"
-						width="44"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{montoAlicuotaDGR}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="467"
-						y="0"
-						width="44"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{alicuotaTasaHigiene}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="511"
-						y="0"
-						width="44"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{montoAlicuotaTasaHigiene}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="79"
-						y="18"
-						width="133"
-						height="18"
-						key="textField-3"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Left">
-						<font pdfFontName="Helvetica" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{cuit}]]></textFieldExpression>
-				</textField>
-				<line direction="TopDown">
-					<reportElement
-						x="1"
-						y="34"
-						width="554"
-						height="1"
-						key="line-2"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="212"
-						y="0"
-						width="0"
-						height="34"
-						key="line-3"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="237"
-						y="0"
-						width="0"
-						height="34"
-						key="line-4"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="284"
-						y="0"
-						width="0"
-						height="34"
-						key="line-5"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="331"
-						y="0"
-						width="0"
-						height="34"
-						key="line-6"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="378"
-						y="0"
-						width="0"
-						height="34"
-						key="line-7"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="423"
-						y="0"
-						width="0"
-						height="34"
-						key="line-8"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="467"
-						y="0"
-						width="0"
-						height="34"
-						key="line-9"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="511"
-						y="0"
-						width="0"
-						height="34"
-						key="line-10"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="554"
-						y="0"
-						width="0"
-						height="34"
-						key="line-11"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-			</band>
-		</detail>
-		<columnFooter>
-			<band height="25"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="237"
-						y="5"
-						width="47"
-						height="18"
-						key="textField-12"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumSubtotal}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="284"
-						y="5"
-						width="47"
-						height="18"
-						key="textField-13"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumIva}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="331"
-						y="5"
-						width="47"
-						height="18"
-						key="textField-14"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumTotal}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="425"
-						y="5"
-						width="47"
-						height="18"
-						key="textField-16"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumDgr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="508"
-						y="5"
-						width="47"
-						height="18"
-						key="textField-18"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumTasaHigiene}]]></textFieldExpression>
-				</textField>
-			</band>
-		</columnFooter>
-		<pageFooter>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</pageFooter>
-		<lastPageFooter>
-			<band height="80"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="454"
-						y="3"
-						width="100"
-						height="18"
-						key="textField"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumDgrConcepto1}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="454"
-						y="23"
-						width="100"
-						height="18"
-						key="textField-4"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumDgrConcepto2}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="454"
-						y="42"
-						width="100"
-						height="18"
-						key="textField-5"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumIvaRI}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="454"
-						y="62"
-						width="100"
-						height="18"
-						key="textField-6"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{sumIvaMT_CF}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="353"
-						y="3"
-						width="100"
-						height="18"
-						key="textField-7"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["DGR Ventas"]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="353"
-						y="23"
-						width="100"
-						height="18"
-						key="textField-8"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["DGR Honorarios"]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="353"
-						y="42"
-						width="100"
-						height="18"
-						key="textField-9"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["IVA R.I."]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="353"
-						y="62"
-						width="100"
-						height="18"
-						key="textField-10"
-						positionType="Float"/>
-					<box></box>
-					<textElement textAlignment="Right">
-						<font pdfFontName="Helvetica" size="9"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["I.V.A MT/CF/EX"]]></textFieldExpression>
-				</textField>
-			</band>
-		</lastPageFooter>
-		<summary>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</summary>
+			</staticText>
+			<line>
+				<reportElement key="line-1" x="0" y="16" width="554" height="1" uuid="c2c326c5-d2ef-4ae8-9290-d1a25b28c61b"/>
+			</line>
+			<line>
+				<reportElement key="line-12" x="212" y="1" width="1" height="14" uuid="fddf1b91-ab64-45ed-bea8-a86b8f2e4d13"/>
+			</line>
+			<line>
+				<reportElement key="line-13" x="237" y="1" width="1" height="14" uuid="2cfa55f8-dfa4-4bed-9d43-ade932ee6d89"/>
+			</line>
+			<line>
+				<reportElement key="line-14" x="284" y="1" width="1" height="14" uuid="9d528b60-a289-455a-914a-c2a958f39032"/>
+			</line>
+			<line>
+				<reportElement key="line-15" x="331" y="1" width="1" height="14" uuid="ef248c1c-f9eb-432e-b115-7b3b259a5f8c"/>
+			</line>
+			<line>
+				<reportElement key="line-16" x="378" y="1" width="1" height="14" uuid="1682ff29-7331-4745-a3f5-215af3a19634"/>
+			</line>
+			<line>
+				<reportElement key="line-18" x="467" y="1" width="1" height="14" uuid="57de38a3-9b22-4f18-bbba-4f2e298b43fb"/>
+			</line>
+			<line>
+				<reportElement key="line-20" x="554" y="1" width="1" height="14" uuid="1951da8b-5092-46e0-9fc0-1f21103ce46f"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="2" y="0" width="77" height="18" uuid="f59bbfbc-4965-4460-86fe-23d7d7a3215d"/>
+				<textElement>
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaFactura}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-1" positionType="Float" x="2" y="18" width="19" height="18" uuid="0fa4df9f-367f-4d4a-abf5-606aa43d8a06"/>
+				<textElement>
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{letraFactura}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" positionType="Float" x="21" y="18" width="70" height="18" uuid="42bc4d46-d2f8-476d-9ca2-9b692355d7a8"/>
+				<textElement>
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroFactura}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="79" y="0" width="133" height="18" uuid="b00f4f8a-94d9-49e3-9f43-bb73ec2395ff"/>
+				<textElement textAlignment="Left">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="212" y="0" width="25" height="18" uuid="d47aa6b4-fd00-4d7b-8c5a-3d437d12fb64"/>
+				<textElement textAlignment="Center">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{situacionImpositivaString}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="237" y="0" width="47" height="18" uuid="20e4048a-6a01-4405-a503-c050ef9f4d23"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montoImponible}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="284" y="0" width="47" height="18" uuid="c8e3c4a7-219b-4975-ae60-4f6c2b401d28"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iva21}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="331" y="0" width="47" height="18" uuid="4f0afddf-69cc-42d7-82c5-1fbb6fdb81e4"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalFactura}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="378" y="0" width="44" height="18" uuid="97254705-816e-435e-8b9d-e4c08e8cb6a7"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alicuotaDGR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="422" y="0" width="44" height="18" uuid="506c669c-7b86-4d66-9058-9400543aeb0f"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montoAlicuotaDGR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="467" y="0" width="44" height="18" uuid="bc338d06-621d-4069-8347-92eb1fa102a9"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alicuotaTasaHigiene}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="511" y="0" width="44" height="18" uuid="f8e06e9f-a548-4a79-957a-ba70d1280038"/>
+				<textElement textAlignment="Right">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montoAlicuotaTasaHigiene}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="79" y="18" width="133" height="18" uuid="e1d3ccfe-29ca-47e4-b5e1-6afa43ea0523"/>
+				<textElement textAlignment="Left">
+					<font size="8" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuit}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-2" x="1" y="34" width="554" height="1" uuid="66f4aab3-ae6f-4665-91ab-4cc2eab33406"/>
+			</line>
+			<line>
+				<reportElement key="line-3" x="212" y="0" width="1" height="34" uuid="f063b345-c015-4a3f-ab0f-49e0c51611b1"/>
+			</line>
+			<line>
+				<reportElement key="line-4" x="237" y="0" width="1" height="34" uuid="930c4180-ee85-4e18-b93d-78b0ede69876"/>
+			</line>
+			<line>
+				<reportElement key="line-5" x="284" y="0" width="1" height="34" uuid="f68487c4-0fc1-43f4-9ccd-d143626e1d79"/>
+			</line>
+			<line>
+				<reportElement key="line-6" x="331" y="0" width="1" height="34" uuid="691cfea3-8629-4edc-8170-8bb3fdaecb31"/>
+			</line>
+			<line>
+				<reportElement key="line-7" x="378" y="0" width="1" height="34" uuid="00dcf47f-77d5-4f31-a7e4-66a9201259f8"/>
+			</line>
+			<line>
+				<reportElement key="line-8" x="423" y="0" width="1" height="34" uuid="c22e5a6e-ac64-4269-a63c-77d0b131d927"/>
+			</line>
+			<line>
+				<reportElement key="line-9" x="467" y="0" width="1" height="34" uuid="3c9f1444-5fa0-4ce6-870f-8683da15c126"/>
+			</line>
+			<line>
+				<reportElement key="line-10" x="511" y="0" width="1" height="34" uuid="0873711d-1791-460e-989d-580f9dae124e"/>
+			</line>
+			<line>
+				<reportElement key="line-11" x="554" y="0" width="1" height="34" uuid="c662cc73-0bf5-46e8-b935-4a0403c20524"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch">
+			<textField evaluationTime="Report" pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-12" positionType="Float" x="237" y="5" width="47" height="18" uuid="0b3c82a2-f276-4610-9fc6-f5d3d384bda5"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumSubtotal}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-13" positionType="Float" x="284" y="5" width="47" height="18" uuid="f1e67bab-804a-4c48-a336-a20f1e5d75f5"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumIva}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-14" positionType="Float" x="331" y="5" width="47" height="18" uuid="33c3c302-b8f8-4b11-bc2e-5b6d2103451d"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumTotal}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-16" positionType="Float" x="425" y="5" width="47" height="18" uuid="afaf2e35-a982-4c3c-a539-8f8e59e80f19"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDgr}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="###0.00" isBlankWhenNull="false">
+				<reportElement key="textField-18" positionType="Float" x="508" y="5" width="47" height="18" uuid="05305674-de60-4870-a0d3-c1542e09be14"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumTasaHigiene}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="80" splitType="Stretch">
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="454" y="3" width="100" height="18" uuid="0b9d4289-6c9a-43fe-a4c4-9f56676792b6"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDgrConcepto1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-4" positionType="Float" x="454" y="23" width="100" height="18" uuid="b09d6062-195f-4af7-a408-c229079b8d7f"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDgrConcepto2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-5" positionType="Float" x="454" y="42" width="100" height="18" uuid="780da384-0d0d-407c-b11b-75e00a10101e"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumIvaRI}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-6" positionType="Float" x="454" y="62" width="100" height="18" uuid="96d5e580-5bae-4705-9b80-bb17b6c14a62"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumIvaMT_CF}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-7" positionType="Float" x="353" y="3" width="100" height="18" uuid="83d6c638-1521-4e55-afdc-e0f8bb02adaa"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ventas"]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-8" positionType="Float" x="353" y="23" width="100" height="18" uuid="9b8fba26-af3a-49be-b3af-710612641bf9"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Honorarios"]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-9" positionType="Float" x="353" y="42" width="100" height="18" uuid="8a971962-05d1-4123-96b0-fe744217711d"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA["IVA R.I."]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField-10" positionType="Float" x="353" y="62" width="100" height="18" uuid="4d756dfb-d5ff-46e5-b160-c6ce70868649"/>
+				<textElement textAlignment="Right">
+					<font size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I.V.A MT/CF/EX"]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>
