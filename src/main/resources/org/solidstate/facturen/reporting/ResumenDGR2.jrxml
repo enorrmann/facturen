@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResumenDGR2" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="333bf24c-4ae1-4364-b028-10d776176369">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<import value="net.sf.jasperreports.engine.*"/>
-	<import value="net.sf.jasperreports.engine.data.*"/>
 	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
 	<parameter name="periodo" class="java.lang.String" isForPrompting="false"/>
 	<field name="percepcion993" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[percepcion993]]></fieldDescription>
@@ -15,7 +16,7 @@
 	<field name="montoImponible" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[montoImponible]]></fieldDescription>
 	</field>
-	<field name="persona" class="com.facturen.entities.Persona">
+	<field name="persona" class="org.solidstate.facturen.entities.Persona">
 		<fieldDescription><![CDATA[persona]]></fieldDescription>
 	</field>
 	<field name="letraFactura" class="java.lang.String">
@@ -24,7 +25,7 @@
 	<field name="observaciones" class="java.lang.String">
 		<fieldDescription><![CDATA[observaciones]]></fieldDescription>
 	</field>
-	<field name="formaDePago" class="com.facturen.entities.FormaDePago">
+	<field name="formaDePago" class="org.solidstate.facturen.entities.FormaDePago">
 		<fieldDescription><![CDATA[formaDePago]]></fieldDescription>
 	</field>
 	<field name="periodoFiscal" class="java.lang.String">

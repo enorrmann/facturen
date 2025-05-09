@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResumenDGR" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="3464ce25-fec8-4007-8fe1-2eaf8aa7a6d4">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<import value="net.sf.jasperreports.engine.*"/>
-	<import value="net.sf.jasperreports.engine.data.*"/>
 	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
 	<field name="percepcion993" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[percepcion993]]></fieldDescription>
 	</field>
@@ -14,7 +15,7 @@
 	<field name="montoImponible" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[montoImponible]]></fieldDescription>
 	</field>
-	<field name="persona" class="com.facturen.entities.Persona">
+	<field name="persona" class="org.solidstate.facturen.entities.Persona">
 		<fieldDescription><![CDATA[persona]]></fieldDescription>
 	</field>
 	<field name="letraFactura" class="java.lang.String">
@@ -23,7 +24,7 @@
 	<field name="observaciones" class="java.lang.String">
 		<fieldDescription><![CDATA[observaciones]]></fieldDescription>
 	</field>
-	<field name="formaDePago" class="com.facturen.entities.FormaDePago">
+	<field name="formaDePago" class="org.solidstate.facturen.entities.FormaDePago">
 		<fieldDescription><![CDATA[formaDePago]]></fieldDescription>
 	</field>
 	<field name="periodoFiscal" class="java.lang.String">
@@ -130,7 +131,7 @@
 	</pageHeader>
 	<columnHeader>
 		<band height="25" splitType="Stretch">
-			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField-10" x="332" y="0" width="60" height="18" uuid="8b1c66e7-acc6-4b7d-8b6a-12542228883e"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -141,7 +142,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Numero Factura"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-11" x="572" y="0" width="60" height="18" uuid="017564ad-9f43-4eb3-bd59-62adf8e85afa"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -152,7 +153,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["TOTAL"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-12" x="78" y="0" width="154" height="18" uuid="b098f7f8-5f61-4439-bc71-45d2e10e91e7"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -163,7 +164,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Razon social"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-13" x="232" y="0" width="100" height="18" uuid="c7761509-0c08-438b-99e5-e80582de47dd"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -174,7 +175,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["C.U.I.T."]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="false">
 				<reportElement key="textField-14" x="7" y="0" width="56" height="18" uuid="4f370c5c-2df1-40be-8867-04fef4105936"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -185,7 +186,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Fecha"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-15" x="392" y="0" width="60" height="18" uuid="7bf95395-dee7-4960-8534-aa1876eaf8af"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -196,7 +197,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Importe Gravado"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-16" x="452" y="0" width="60" height="18" uuid="6036eaad-c66f-4e26-8786-cbf3816e9ee0"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -207,7 +208,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["I.V.A."]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-17" x="512" y="0" width="60" height="18" uuid="e0cb6dec-d373-4235-9f54-ca50d2544669"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -218,7 +219,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Percepcion D.G.R."]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-18" x="632" y="0" width="60" height="18" uuid="e654cc4d-1bb3-4e84-a8ec-400f05ea1069"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -229,7 +230,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA["Gravado Gastos"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="false">
 				<reportElement key="textField-19" x="692" y="0" width="60" height="18" uuid="2d57195e-3d8d-471f-b00f-a271a358adbd"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
